@@ -4,36 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3kwonjun12</title>
+
   <style>
     :root {
       --bg: #ffffff;
-      --panel: rgba(255,255,255,0.06);
-      --panel-2: rgba(255,255,255,0.1);
+      --panel: rgba(0,0,0,0.03);
+      --panel-2: rgba(0,0,0,0.05);
       --text: #111111;
       --muted: #555555;
       --line: rgba(0,0,0,0.08);
       --accent: #7c9cff;
-      --accent-2: #87f0c6;
       --shadow: 0 4px 14px rgba(0,0,0,0.08);
       --max: 1100px;
       --radius: 24px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Noto Sans KR",
+        sans-serif;
+
       background:
-        radial-gradient(circle at top left, rgba(124,156,255,0.22), transparent 28%),
-        radial-gradient(circle at top right, rgba(135,240,198,0.14), transparent 24%),
+        radial-gradient(circle at top left,
+        rgba(124,156,255,0.15),
+        transparent 28%),
         var(--bg);
+
       color: var(--text);
       line-height: 1.6;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
     .container {
       width: min(100% - 32px, var(--max));
@@ -43,37 +65,44 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
+      z-index: 100;
+
+      backdrop-filter: blur(12px);
+
       background: rgba(255,255,255,0.9);
+
       border-bottom: 1px solid var(--line);
     }
 
     .nav {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+
       padding: 16px 0;
       gap: 16px;
     }
 
     .brand {
+      font-size: 1.1rem;
       font-weight: 800;
-      letter-spacing: 0.2px;
     }
 
     .menu {
       display: flex;
-      flex-wrap: wrap;
       gap: 14px;
+      flex-wrap: wrap;
+
       color: var(--muted);
       font-size: 0.95rem;
     }
 
-    .menu a:hover { color: var(--text); }
+    .menu a:hover {
+      color: var(--text);
+    }
 
     .hero {
-      padding: 80px 0 34px;
+      padding: 80px 0 40px;
     }
 
     .hero-grid {
@@ -83,69 +112,60 @@
       align-items: center;
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(0,0,0,0.03);
-      color: var(--muted);
-      font-size: 0.92rem;
-      margin-bottom: 18px;
-    }
-
     h1 {
-      font-size: clamp(1.3rem, 2.5vw, 2.4rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
+      font-size: clamp(1.4rem, 2.5vw, 2.5rem);
+      line-height: 1.1;
+      margin: 0 0 18px;
       letter-spacing: -0.03em;
-    }
-
-    .lead {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 60ch;
-      margin: 0 0 24px;
     }
 
     .actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
       padding: 12px 18px;
+
       border-radius: 14px;
+
       border: 1px solid var(--line);
-      background: rgba(0,0,0,0.03);
+
+      background: var(--panel);
+
       box-shadow: var(--shadow);
-      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      border-color: rgba(124,156,255,0.55);
       background: var(--panel-2);
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, var(--accent), #5f7dff);
+      background: linear-gradient(
+        135deg,
+        var(--accent),
+        #5f7dff
+      );
+
       color: white;
-      border-color: transparent;
+      border: none;
     }
 
-    .hero-card, .card, .timeline-item, .post {
-      background: rgba(0,0,0,0.03);
+    .hero-card,
+    .card,
+    .post {
+      background: var(--panel);
+
       border: 1px solid var(--line);
+
       border-radius: var(--radius);
+
       box-shadow: var(--shadow);
     }
 
@@ -153,29 +173,49 @@
       padding: 24px;
     }
 
+    .profile-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .profile-img {
+      width: 140px;
+      height: 140px;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+
+      border: 4px solid rgba(0,0,0,0.08);
+    }
+
     .hero-card h2 {
-      margin: 0 0 12px;
-      font-size: 1.3rem;
+      margin: 0 0 16px;
+      text-align: center;
     }
 
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-      margin-top: 18px;
     }
 
     .stat {
       padding: 14px;
-      border-radius: 18px;
-      background: rgba(0,0,0,0.03);
-      border: 1px solid var(--line);
+
       text-align: center;
+
+      border-radius: 18px;
+
+      border: 1px solid var(--line);
+
+      background: rgba(0,0,0,0.02);
     }
 
     .stat strong {
       display: block;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin-bottom: 4px;
     }
 
@@ -184,10 +224,6 @@
     }
 
     .section-title {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 16px;
       margin-bottom: 18px;
     }
 
@@ -197,11 +233,12 @@
     }
 
     .section-title p {
-      margin: 0;
+      margin: 4px 0 0;
       color: var(--muted);
     }
 
-    .grid-3 {
+    .grid-3,
+    .posts {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
@@ -211,14 +248,16 @@
       padding: 20px;
     }
 
-    .card h3, .post h3 {
-      margin: 0 0 10px;
-      font-size: 1.15rem;
+    .card h3,
+    .post h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
     }
 
-    .card p, .post p, .timeline-item p {
-      margin: 0;
+    .card p,
+    .post p {
       color: var(--muted);
+      margin: 0;
     }
 
     .pill-list {
@@ -230,58 +269,42 @@
 
     .pill {
       padding: 8px 12px;
-      border: 1px solid var(--line);
+
       border-radius: 999px;
+
+      border: 1px solid var(--line);
+
       background: rgba(0,0,0,0.03);
-      color: var(--text);
+
       font-size: 0.92rem;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 14px;
-    }
-
-    .timeline-item {
-      padding: 20px;
-      display: grid;
-      gap: 8px;
-    }
-
-    .timeline-top {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .timeline-top strong { font-size: 1.05rem; }
-
-    .posts {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
     }
 
     .post {
       overflow: hidden;
     }
 
-    .post .thumb {
+    .thumb {
       aspect-ratio: 16 / 9;
-      background: linear-gradient(135deg, rgba(124,156,255,0.8), rgba(135,240,198,0.55));
+
+      background: linear-gradient(
+        135deg,
+        rgba(124,156,255,0.8),
+        rgba(135,240,198,0.55)
+      );
     }
 
-    .post .content {
+    .content {
       padding: 18px;
     }
 
     .meta {
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
+
       color: var(--muted);
-      font-size: 0.92rem;
+
+      font-size: 0.9rem;
+
       margin-bottom: 10px;
     }
 
@@ -293,142 +316,282 @@
 
     footer {
       padding: 36px 0 50px;
-      color: var(--muted);
+
+      margin-top: 20px;
+
       border-top: 1px solid var(--line);
-      margin-top: 18px;
+
+      color: var(--muted);
     }
 
-    .small { font-size: 0.92rem; }
+    .small {
+      font-size: 0.92rem;
+    }
 
     @media (max-width: 900px) {
-      .hero-grid, .grid-3, .posts, .contact { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr 1fr 1fr; }
+      .hero-grid,
+      .grid-3,
+      .posts,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
     }
 
     @media (max-width: 640px) {
-      .nav { flex-direction: column; align-items: flex-start; }
-      .stats { grid-template-columns: 1fr; }
-      h1 { font-size: 2.4rem; }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <header>
     <div class="container nav">
-      <div class="brand">준영.dev</div>
+
+      <div class="brand">
+        3kwonjun12
+      </div>
+
       <nav class="menu">
         <a href="#about">소개</a>
-        <a href="#projects">포트폴리오</a>
         <a href="#blog">블로그</a>
         <a href="#contact">연락처</a>
       </nav>
+
     </div>
   </header>
 
   <main class="container">
+
     <section class="hero">
+
       <div class="hero-grid">
+
         <div>
-          <h1>안녕하세요,<br />PS를 좋아하는 중학생 3kwonjun12입니다.</h1>
+
+          <h1>
+            안녕하세요,<br>
+            PS를 좋아하는 중학생 3kwonjun12입니다.
+          </h1>
+
           <div class="actions">
-            <a class="btn primary" href="#projects">자세히 알아보기</a>
-            <a class="btn" href="#contact">이메일 주소</a>
+            <a class="btn primary" href="#about">
+              자세히 알아보기
+            </a>
+
+            <a class="btn" href="#contact">
+              이메일 주소
+            </a>
           </div>
+
+          <div class="pill-list">
+            <span class="pill">C</span>
+            <span class="pill">PS</span>
+            <span class="pill">Algorithm</span>
+            <span class="pill">GitHub Pages</span>
+          </div>
+
+        </div>
+
         <aside class="hero-card">
-          <div style="display:flex;justify-content:center;margin-bottom:18px;">
-            <img src="profile.jpg" alt="프로필 사진" style="width:140px;height:140px;object-fit:cover;border-radius:50%;border:4px solid rgba(0,0,0,0.08);">
+
+          <div class="profile-wrap">
+            <img
+              src="profile.jpg"
+              alt="프로필 사진"
+              class="profile-img"
+            >
           </div>
+
           <h2>한눈에 보는 정보</h2>
+
           <div class="stats">
-            <div class="stat"><strong>3+</strong><span>프로젝트</span></div>
-            <div class="stat"><strong>10+</strong><span>글</span></div>
-            <div class="stat"><strong>1</strong><span>웹사이트</span></div>
+
+            <div class="stat">
+              <strong>3+</strong>
+              <span>프로젝트</span>
+            </div>
+
+            <div class="stat">
+              <strong>10+</strong>
+              <span>글</span>
+            </div>
+
+            <div class="stat">
+              <strong>1</strong>
+              <span>웹사이트</span>
+            </div>
+
           </div>
+
         </aside>
+
       </div>
+
     </section>
 
     <section id="about">
+
       <div class="section-title">
         <h2>소개</h2>
         <p>누구인지, 무엇을 하는지</p>
       </div>
+
       <div class="grid-3">
+
         <div class="card">
           <h3>저는 이런 사람입니다</h3>
+
           <p>
-            PS와 수학 과학을 좋아합니다.
+            PS와 수학, 과학을 좋아합니다.
           </p>
         </div>
+
         <div class="card">
           <h3>관심 분야</h3>
+
           <p>
-            알고리즘, 웹 개발, 게임 제작, 머신 러님, 그리고 작은 도구를 직접 만들어 쓰는 것에 관심이 있습니다.
+            알고리즘, 웹 개발, 게임 제작,
+            머신 러닝에 관심이 있습니다.
           </p>
         </div>
+
         <div class="card">
           <h3>목표</h3>
+
           <p>
-            나중에 이 사이트를 통해 대회 기록, 공부 정리, 생각 메모를 쌓아가는 것이 목표입니다.
+            공부 기록과 프로젝트 기록을
+            꾸준히 남기는 것이 목표입니다.
           </p>
         </div>
+
       </div>
+
     </section>
+
     <section id="blog">
+
       <div class="section-title">
         <h2>블로그</h2>
         <p>최근 글 예시</p>
       </div>
+
       <div class="posts">
+
         <article class="post">
+
           <div class="thumb"></div>
+
           <div class="content">
-            <div class="meta"><span>2026-05-10</span><span>알고리즘</span></div>
+
+            <div class="meta">
+              <span>2026-05-10</span>
+              <span>알고리즘</span>
+            </div>
+
             <h3>문제 읽는 순서 정리</h3>
-            <p>입력, 출력, 제한, 예제를 먼저 보는 습관을 정리한 글입니다.</p>
+
+            <p>
+              입력, 출력, 제한을 먼저 읽는 습관에 대한 글입니다.
+            </p>
+
           </div>
+
         </article>
+
         <article class="post">
+
           <div class="thumb"></div>
+
           <div class="content">
-            <div class="meta"><span>2026-05-08</span><span>웹</span></div>
+
+            <div class="meta">
+              <span>2026-05-08</span>
+              <span>웹</span>
+            </div>
+
             <h3>GitHub Pages 배포하기</h3>
-            <p>로컬에서 만든 HTML 파일을 GitHub에 올리고 사이트로 공개하는 과정입니다.</p>
+
+            <p>
+              HTML 파일을 GitHub에 올려
+              사이트를 공개하는 과정입니다.
+            </p>
+
           </div>
+
         </article>
+
         <article class="post">
+
           <div class="thumb"></div>
+
           <div class="content">
-            <div class="meta"><span>2026-05-05</span><span>기록</span></div>
+
+            <div class="meta">
+              <span>2026-05-05</span>
+              <span>기록</span>
+            </div>
+
             <h3>공부 기록을 남기는 이유</h3>
-            <p>나중에 다시 보기 쉽도록 짧게라도 계속 쌓아두는 방식입니다.</p>
+
+            <p>
+              짧게라도 기록을 남기는 습관에 대한 글입니다.
+            </p>
+
           </div>
+
         </article>
+
       </div>
+
     </section>
 
     <section id="contact">
+
       <div class="section-title">
         <h2>연락처</h2>
-        <p>원하는 방식으로 바꾸세요</p>
+        <p>원하는 방식으로 수정 가능</p>
       </div>
+
       <div class="contact">
+
         <div class="card">
           <h3>이메일</h3>
           <p>kwonjun1313@gmail.com</p>
         </div>
+
         <div class="card">
           <h3>GitHub</h3>
-          <p>github.com/your-id</p>
+          <p>github.com/kwonjun12</p>
         </div>
+
       </div>
+
     </section>
+
   </main>
 
   <footer>
     <div class="container small">
-      © 2026 준영.dev. Built with HTML, CSS, and GitHub Pages.
+      © 2026 3kwonjun12
     </div>
   </footer>
+
 </body>
 </html>
